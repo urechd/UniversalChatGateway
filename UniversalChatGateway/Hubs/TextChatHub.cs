@@ -4,9 +4,8 @@ namespace UniversalChatGateway.Hubs;
 
 public class TextChatHub : Hub
 {
-    public async Task SendMessage(string user, string message)
+    public async Task SendMessage(byte[] message)
     {
-        string messageToSend = $"{user}: {message}";
-        await Clients.All.SendAsync("ReceiveMessage", messageToSend);
+        await Clients.All.SendAsync("ReceiveMessage", message);
     }
 }
